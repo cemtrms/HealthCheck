@@ -1,0 +1,31 @@
+﻿@using ExampleProject.Controllers
+
+@model UpdateMonitoringTaskEnabledDto
+<div class="modal-content">
+
+    <div class="modal-header @(Model.Enabled ?" alert-primary" : " bg-danger"  )">
+        <h2 class="modal-title  ">Warning</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <form asp-action="@(Model.Enabled ? nameof(UrlController.EnableMonitoringTask):nameof(UrlController.DisableMonitorTask) )" asp-controller="Url" method="post" enctype="multipart/form-data">
+
+        @Html.AntiForgeryToken()
+
+        <div class="modal-body form-horizontal">
+            @Html.HiddenFor(model => Model.MonitoringId)
+            @Model.Message
+            <div class="@(Model.Enabled?"bg-warning":"btn-success") ">
+            </div>
+        </div>
+        <!--Modal Footer Start-->
+        <div class="modal-footer">
+            <button data-dismiss="modal" id="No" class="btn btn-default" type="button">Cancel</button>
+            <button class="btn btn-success relative" id="btnSubmit" type="submit">
+                <i class="loader"></i>
+                Ok
+            </button>
+        </div>
+    </form>
+</div>
+
+

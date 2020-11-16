@@ -1,0 +1,50 @@
+﻿@model MonitoringTaskDto
+<div class="modal-content">
+
+    <div class="modal-header">
+        <h2 class="modal-title">Add Monitor Task</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <form asp-action="Create" asp-controller="Url" method="post" enctype="multipart/form-data">
+
+        @Html.AntiForgeryToken()
+
+        <div class="modal-body form-horizontal">
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Name, new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    <input asp-for="@Model.Name" placeholder="Enter Name" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Url, new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    <input asp-for="@Model.Url" placeholder="Enter Url Name" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.IntervalSeconds, new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    <input asp-for="@Model.IntervalSeconds" placeholder="Enter Name" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Enabled, new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    <input asp-for="@Model.Enabled" type="checkbox" checked="checked">
+                </div>
+            </div>
+        </div>
+        <!--Modal Footer Start-->
+        <div class="modal-footer">
+            <button data-dismiss="modal" id="cancel" class="btn btn-default" type="button">Cancel</button>
+            <button class="btn btn-success relative" id="btnSubmit" type="submit">
+                <i class="loader"></i>
+                Submit
+            </button>
+        </div>
+    </form>
+
+</div>
+
+
